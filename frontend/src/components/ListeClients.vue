@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Bilan et Graphe — à compléter par Personne 3</h2>
+    <h2>Liste Clients — à compléter par Personne 2</h2>
   </div>
 </template>
 
