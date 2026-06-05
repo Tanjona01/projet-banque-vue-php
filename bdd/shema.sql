@@ -32,9 +32,7 @@ CREATE TABLE transactions (
     FOREIGN KEY (compte_id) REFERENCES comptes(id) ON DELETE CASCADE
 );
 
--- =========================
--- TABLE UTILISATEURS (admin/login)
--- =========================
+
 CREATE TABLE utilisateurs (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(100) UNIQUE NOT NULL,
