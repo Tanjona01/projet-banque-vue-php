@@ -2,29 +2,32 @@
 
 class Database {
 
-    private $host = "localhost";
-    private $db_name = "banque_spa";
+    private $host     = "localhost";
+    private $db_name  = "banque_spa";
     private $username = "root";
     private $password = "";
-    public $conn;
+    public  $conn;
 
     public function getConnection() {
         $this->conn = null;
 
         try {
             $this->conn = new PDO(
-                "mysql:host=" . $this->host . ";dbname=" . $this->db_name,
+                "mysql:host=" . $this->host . ";dbname=" . $this->db_name . ";charset=utf8mb4",
                 $this->username,
                 $this->password
             );
-
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
         } catch(PDOException $exception) {
-            echo "Erreur de connexion: " . $exception->getMessage();
+            http_response_code(500);
+            echo json_encode(["success" => false, "message" => "Erreur de connexion : " . $exception->getMessage()]);
+            exit();
         }
 
         return $this->conn;
     }
 }
 ?>
+
